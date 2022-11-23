@@ -11,7 +11,8 @@ const App = () => (
 <TouchableOpacity
         onPress={() => Alert.alert('Round Button pressed')}
         style={styles.buttonRound}>
-        <Text>I'm a button</Text>
+        <Text>Tap</Text>
+        <Text>Tap</Text>
       </TouchableOpacity>
     </View>
 
@@ -22,16 +23,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    marginHorizontal: 16,
+    marginHorizontal: 25,
   },
   buttonRound:{
-    width: 100,
-    height: 100,
+    width: 360,
+    height: 360,
     alignItems: 'center',
     padding: 10,
-    borderRadius: 100,
+    borderRadius: 200,
     justifyContent: 'center',
-    backgroundColor: 'orange',
+    backgroundColor: 'white',
+    borderColour: 'blue',
   },
 });
 
