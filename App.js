@@ -5,7 +5,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>Lets start mobile appssss!! Yayyyaa!</Text>
-
+      <Text>Yeeayyyaa!</Text>
       <StatusBar style="auto" />
     </View>
   );
