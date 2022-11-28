@@ -10,13 +10,6 @@ const App = () => (
       // Button Linear Gradient
       colors={['#4691EB', '#ffffff',]}
       style={styles.background}>
-      <View>
-        <TouchableOpacity
-          onPress={() => Alert.alert('Round Button pressed')}
-          style={styles.buttonRound}>
-          <Text>I'm a button</Text>
-        </TouchableOpacity>
-      </View>
     <View>
 <TouchableOpacity
         onPress={() => Alert.alert('Round Button pressed')}
