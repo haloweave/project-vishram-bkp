@@ -10,19 +10,14 @@ const App = () => (
       // Button Linear Gradient
       colors={['#4691EB', '#ffffff',]}
       style={styles.background}>
-      <View>
-        <TouchableOpacity
-          onPress={() => Alert.alert('Round Button pressed')}
-          style={styles.buttonRound}>
-          <Text>I'm a button</Text>
-        </TouchableOpacity>
-      </View>
     <View>
 <TouchableOpacity
         onPress={() => Alert.alert('Round Button pressed')}
         style={styles.buttonRound}>
-        <Text>Tap</Text>
-        <Text>Tap</Text>
+          <Text style={styles.text}>
+            Sky
+            <Text style={styles.blueText}>Blue!</Text>
+          </Text>
       </TouchableOpacity>
     </View>
 
@@ -36,8 +31,14 @@ const styles = StyleSheet.create({
 
     flex: 1,
     justifyContent: 'center',
-    
-   
+  },
+
+  text:{
+    fontWeight: 'bold' ,
+    fontSize: 50,
+  },
+  blueText:{
+color:'#4691EB',
   },
   background: {
     position: 'absolute',
@@ -50,10 +51,15 @@ const styles = StyleSheet.create({
 
   },
   buttonRound: {
-    width: 100,
-    height: 100,
+    shadowColor: 'black',
+shadowOpacity: 0.8,
+elevation: 10,
+backgroundColor : "#0000",
+shadowRadius: 15 ,
+    top:300,
+    height: 330,
     alignItems: 'center',
-    padding: 10,
+    marginHorizontal:25,
     borderRadius: 200,
     justifyContent: 'center',
     backgroundColor: 'white',
