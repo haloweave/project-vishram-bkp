@@ -9,6 +9,8 @@ import {
   Alert,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
+import Entypo from "react-native-vector-icons/Entypo";
 
 const App = () => (
   <SafeAreaView style={styles.container}>
@@ -29,6 +31,10 @@ const App = () => (
             <Text style={styles.blueText}>Blue!</Text>
           </Text>
         </TouchableOpacity>
+
+        <View style={styles.mic}>
+          <FontAwesome name="microphone" className="micc" />
+        </View>
       </View>
     </LinearGradient>
   </SafeAreaView>
@@ -38,6 +44,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
+  },
+
+  mic: {
+    top: 150,
+  },
+
+  micc: {
+    height: 30,
+    width: 30,
+    color:"blue",
   },
 
   text: {
