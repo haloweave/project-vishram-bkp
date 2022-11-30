@@ -10,7 +10,10 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import Entypo from "react-native-vector-icons/Entypo";
+import { app } from "./initFirebase";
+
+
+app.firestore().collection("thumbs-up").add({ skyblue: "trial" });
 
 const App = () => (
   <SafeAreaView style={styles.container}>
@@ -33,7 +36,7 @@ const App = () => (
         </TouchableOpacity>
 
         <View style={styles.mic}>
-          <FontAwesome name="microphone" className="micc" />
+          <FontAwesome icon="microphone" className="micc" />
         </View>
       </View>
     </LinearGradient>
@@ -53,7 +56,7 @@ const styles = StyleSheet.create({
   micc: {
     height: 30,
     width: 30,
-    color:"blue",
+    color: "blue",
   },
 
   text: {
