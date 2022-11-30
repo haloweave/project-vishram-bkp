@@ -12,9 +12,25 @@ import { LinearGradient } from "expo-linear-gradient";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { app } from "./initFirebase";
 
+//const date1 = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
 
-app.firestore().collection("thumbs-up").add({ skyblue: "trial" });
+var date = new Date().getDate();
+var month = new Date().getMonth() + 1;
+var year = new Date().getFullYear();
+//console.log(date + ":" + month + ":" +year);
+var hour = new Date().getHours();
+var min = new Date().getMinutes();
 
+const press = () => {
+  app
+    .firestore()
+    .collection("Sky-Blue")
+    .add({
+      Date: date + "/" + month + "/" + year,
+      Time: hour + ":" + min,
+      Name: "Temp"
+    });
+};
 const App = () => (
   <SafeAreaView style={styles.container}>
     <LinearGradient
@@ -24,7 +40,9 @@ const App = () => (
     >
       <View style={styles.bigButton}>
         <TouchableOpacity
-          onPress={() => Alert.alert("Round Button pressed")}
+          //onPress={handleSubmit(press)}
+          // onPress={() => Alert.alert("Round Button pressed")}
+          onPress={() => press()}
           style={styles.buttonRound}
         >
           <Text style={styles.text1}>Tap</Text>
