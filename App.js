@@ -28,7 +28,7 @@ const press = () => {
     .add({
       Date: date + "/" + month + "/" + year,
       Time: hour + ":" + min,
-      Name: "Temp"
+      Name: "Granny"
     });
 };
 const App = () => (
