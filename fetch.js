@@ -9,7 +9,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 export const Fetch = () => {
 
     const [users, setUsers] = useState([]);
-    const skyblue = app.firestore().collection('skyblue').orderBy("Count","desc");
+    const skyblue = app.firestore().collection('skyblue').orderBy("Count", "desc");
 
     useEffect(() => {
         skyblue.onSnapshot(
@@ -32,11 +32,13 @@ export const Fetch = () => {
     return (
         <View style={{ flex: 1, marginTop: 50, }}>
             <LinearGradient
-            // Background Linear Gradient
-            colors={['transparent',"#4691EB"]}
-            style={styles.background}
-        ></LinearGradient>
-        <Text style={styles.log}>Logs</Text>
+                // Background Linear Gradient
+                colors={['transparent', "#4691EB"]}
+                style={styles.background}
+            ></LinearGradient>
+            <View style={{alignItems:"center", marginTop:20, marginBottom:15}}>
+                <Text style={styles.log}>Logs</Text>
+            </View>
             <FlatList
                 style={{ height: '100%' }}
                 data={users}
@@ -61,18 +63,18 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         margin: 5,
         marginHorizontal: 10,
-        borderColor:"#4691EB",
-        borderWidth:2
+        borderColor: "#4691EB",
+        borderWidth: 2
     },
 
     innerContainer: {
         alignItems: 'center',
         flexDirection: 'column',
-       },
+    },
 
     itemHeading: {
         fontWeight: "bold",
-      fontSize: 17
+        fontSize: 17
     },
 
     background: {
@@ -80,10 +82,10 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         top: 0,
-        height:'100%'
-      },
+        height: '100%'
+    },
 
-      log: {
+    log: {
         fontWeight: "bold",
         fontSize: 30,
         alignContent: 'center'

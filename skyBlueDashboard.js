@@ -21,7 +21,7 @@ var year = new Date().getFullYear();
 var hour = new Date().getHours();
 var min = new Date().getMinutes();
 
-
+console.log(min);
 const press = () => {
     app.firestore().collection("skyblue").add({
         Date: date + "/" + month + "/" + year,
