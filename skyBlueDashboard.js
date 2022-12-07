@@ -30,12 +30,17 @@ const press = () => {
 };
 const SkyBlueDashboard = () => (
 
+    
     <View style={
         styles.bigButton
     }>
+         {/* <TouchableOpacity style={styles.buttons} onPress={() => navigation.navigate('Home')}>
+                <Text style={styles.texts}>
+                    Go to Admin
+                </Text>
+            </TouchableOpacity> */}
 
-        <TouchableOpacity //onPress={handleSubmit(press)}
-            // onPress={() => Alert.alert("Round Button pressed")}
+        <TouchableOpacity 
             onPress={
                 () => press()
             }
@@ -109,7 +114,25 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         backgroundColor: "white",
         borderColor: "#4691EB"
+    },
+
+    buttons: {
+        height: 75,
+        width: 250,
+        alignItems: "center", //Horizontal
+        borderRadius: 100,
+        borderWidth: 5,
+        justifyContent: "center", //Vertical
+        backgroundColor: "white",
+        borderColor: "black",
+        marginBottom:20
+    },
+
+    texts: {
+        fontWeight: "bold",
+        fontSize: 30
     }
+
 });
 
 export default SkyBlueDashboard;

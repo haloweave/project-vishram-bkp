@@ -1,6 +1,6 @@
 import React from "react";
-import {StyleSheet, SafeAreaView, View} from "react-native";
-import {LinearGradient} from "expo-linear-gradient";
+import { StyleSheet, SafeAreaView, TouchableOpacity, View, Button, Text } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 import SkyBlueDashboard from "./skyBlueDashboard";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -8,32 +8,72 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
 
-const App = () => (
-    <SafeAreaView style={
-        styles.container
-    }>
+function HomeScreen({ navigation }) {
+    return (
+        <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+
+
+            <TouchableOpacity style={styles.buttons} onPress={() => navigation.navigate('User')}>
+                <Text style={styles.texts}>
+                    Go to User
+                </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.buttons} onPress={() => navigation.navigate('User')}>
+                <Text style={styles.texts}>
+                    Go to Admin
+                </Text>
+            </TouchableOpacity>
 
 
 
-            <NavigationContainer>
+        </SafeAreaView>
+    );
+}
 
-                <Stack.Navigator>
-                <Stack.Screen name="Skyblue" component={SkyBlueDashboard} />
+function MyStack() {
+    return (
+        <Stack.Navigator  screenOptions={{headerShown: true}} >
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="User" component={SkyBlueDashboard} />
+        </Stack.Navigator>
+    );
+}
 
-                   
-                </Stack.Navigator>
-              
-            </NavigationContainer>
-        
-    </SafeAreaView>
+function App() {
+    return (
+        <NavigationContainer >
+            <MyStack />
+        </NavigationContainer>
+    );
+}
 
-);
+// const App = () => (
+//     <SafeAreaView style={
+//         styles.container
+//     }>
+// return(
+
+
+//         <NavigationContainer>
+
+//             <Stack.Navigator>
+
+//                 <MyStack />
+
+//             </Stack.Navigator>
+
+//         </NavigationContainer>
+// )
+//     </SafeAreaView>
+
+// );
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: "center",
-        backgroundColor: '#FFFFFF' 
+        backgroundColor: '#FFFFFF'
     },
 
     background: {
@@ -44,8 +84,31 @@ const styles = StyleSheet.create({
         bottom: 0,
         flex: 1,
         width: "100%",
-       
+
+    },
+
+    button1: {
+        marginBottom: 20,
+        padding: 600
+    },
+
+    buttons: {
+        height: 75,
+        width: 250,
+        alignItems: "center", //Horizontal
+        borderRadius: 100,
+        borderWidth: 5,
+        justifyContent: "center", //Vertical
+        backgroundColor: "white",
+        borderColor: "black",
+        marginBottom:20
+    },
+
+    texts: {
+        fontWeight: "bold",
+        fontSize: 30
     }
+
 });
 
 export default App;
