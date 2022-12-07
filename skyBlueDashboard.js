@@ -2,7 +2,6 @@ import React from "react";
 import {
     TouchableOpacity,
     StyleSheet,
-
     View,
     SafeAreaView,
     Text,
@@ -10,7 +9,8 @@ import {
 } from "react-native";
 
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import {app} from "./initFirebase";
+import { app } from "./initFirebase";
+import { LinearGradient } from 'expo-linear-gradient';
 
 // const date1 = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
 
@@ -30,46 +30,43 @@ const press = () => {
 };
 const SkyBlueDashboard = () => (
 
-    
-    <View style={
-        styles.bigButton
-    }>
-         {/* <TouchableOpacity style={styles.buttons} onPress={() => navigation.navigate('Home')}>
+
+    <View style={styles.container}>
+        <LinearGradient
+            // Background Linear Gradient
+            colors={['transparent',"#4691EB"]}
+            style={styles.background}
+        ></LinearGradient>
+        {/* <TouchableOpacity style={styles.buttons} onPress={() => navigation.navigate('Home')}>
                 <Text style={styles.texts}>
                     Go to Admin
                 </Text>
             </TouchableOpacity> */}
 
-        <TouchableOpacity 
-            onPress={
-                () => press()
-            }
-            style={
-                styles.buttonRound
-        }>
-            <Text style={
-                styles.text1
-            }>Tap</Text>
+        <TouchableOpacity onPress={() => press()} style={styles.buttonRound}>
+            <Text style={styles.text1}>
+                Tap
+            </Text>
 
-            <Text style={
-                styles.text
-            }>
+            <Text style={styles.text}>
                 Sky
-                <Text style={
-                    styles.blueText
-                }>Blue!</Text>
+                <Text style={styles.blueText}>
+                    Blue!
+                </Text>
             </Text>
         </TouchableOpacity>
-
-        <View style={
-            styles.mic
-        }>
-            <FontAwesome icon="microphone" className="micc"/>
-        </View>
+     
     </View>
 );
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+       // backgroundColor: "#4691EB",
+      },
+
     mic: {
         top: 150
     },
@@ -125,13 +122,21 @@ const styles = StyleSheet.create({
         justifyContent: "center", //Vertical
         backgroundColor: "white",
         borderColor: "black",
-        marginBottom:20
+        marginBottom: 20
     },
 
     texts: {
         fontWeight: "bold",
         fontSize: 30
-    }
+    },
+
+    background: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        height:'100%'
+      }
 
 });
 

@@ -4,6 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import SkyBlueDashboard from "./skyBlueDashboard";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Fetch } from "./fetch";
 
 
 const Stack = createNativeStackNavigator();
@@ -19,7 +20,7 @@ function HomeScreen({ navigation }) {
                 </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.buttons} onPress={() => navigation.navigate('User')}>
+            <TouchableOpacity style={styles.buttons} onPress={() => navigation.navigate('Admin')}>
                 <Text style={styles.texts}>
                     Go to Admin
                 </Text>
@@ -33,9 +34,10 @@ function HomeScreen({ navigation }) {
 
 function MyStack() {
     return (
-        <Stack.Navigator  screenOptions={{headerShown: true}} >
+        <Stack.Navigator  screenOptions={{headerShown: false}} >
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="User" component={SkyBlueDashboard} />
+            <Stack.Screen name="Admin" component={Fetch} />
         </Stack.Navigator>
     );
 }
@@ -48,33 +50,13 @@ function App() {
     );
 }
 
-// const App = () => (
-//     <SafeAreaView style={
-//         styles.container
-//     }>
-// return(
-
-
-//         <NavigationContainer>
-
-//             <Stack.Navigator>
-
-//                 <MyStack />
-
-//             </Stack.Navigator>
-
-//         </NavigationContainer>
-// )
-//     </SafeAreaView>
-
-// );
-
 const styles = StyleSheet.create({
-    container: {
+     container: {
         flex: 1,
-        justifyContent: "center",
-        backgroundColor: '#FFFFFF'
-    },
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'orange',
+      },
 
     background: {
         position: "absolute",
