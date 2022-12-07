@@ -21,12 +21,15 @@ var year = new Date().getFullYear();
 var hour = new Date().getHours();
 var min = new Date().getMinutes();
 
+
 const press = () => {
-    app.firestore().collection("Sky-Blue").add({
+    app.firestore().collection("skyblue").add({
         Date: date + "/" + month + "/" + year,
         Time: hour + ":" + min,
-        Name: "The Devil"
+        Name: "Haloweave",
+        Count:  year +""+ month +""+ date +""+ hour +""+ min   
     });
+   
 };
 const SkyBlueDashboard = () => (
 

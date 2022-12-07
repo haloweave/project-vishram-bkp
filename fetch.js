@@ -9,7 +9,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 export const Fetch = () => {
 
     const [users, setUsers] = useState([]);
-    const skyblue = app.firestore().collection('Sky-Blue');
+    const skyblue = app.firestore().collection('skyblue').orderBy("Count","desc");
 
     useEffect(() => {
         skyblue.onSnapshot(
