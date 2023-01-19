@@ -14,18 +14,26 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 // const date1 = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
 
-var date = new Date().getDate();
-var month = new Date().getMonth() + 1;
-var year = new Date().getFullYear();
-var hour = new Date().getHours();
-var min = new Date().getMinutes();
+
 
 const press = () => {
+   
+    var date = new Date().getDate();
+    var month = new Date().getMonth() + 1;
+    var year = new Date().getFullYear();
+    var hour = new Date().getHours();
+    var min = new Date().getMinutes();
+   
+     if(min>0 && min<9){
+        min = "0"+min;
+       //console.log(min)
+     }
+
     app.firestore().collection("skyblue").add({
         Date: date + "/" + month + "/" + year,
         Time: hour + ":" + min,
         Name: "Haloweave",
-        Count:  year +""+ month +""+ date +""+ hour +""+ min   
+        Count:  year +""+ month +""+ date +""+ hour +""+ min,
     });
    
 };
