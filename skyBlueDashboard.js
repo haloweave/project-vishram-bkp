@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
     TouchableOpacity,
     StyleSheet,
@@ -12,9 +12,36 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { app } from "./initFirebase";
 import { LinearGradient } from 'expo-linear-gradient';
 
+import * as Location from 'expo-location';
+
 // const date1 = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
 
 
+
+const SkyBlueDashboard = () => {
+    const [location, setLocation] = useState(null);
+    const [errorMsg, setErrorMsg] = useState(null);
+  
+    useEffect(() => {
+        (async () => {
+          
+          let { status } = await Location.requestForegroundPermissionsAsync();
+          if (status !== 'granted') {
+            setErrorMsg('Permission to access location was denied');
+            return;
+          }
+    
+          let location = await Location.getCurrentPositionAsync({});
+          setLocation(location);
+        })();
+      }, []);
+    
+      let text = 'Waiting..';
+      if (errorMsg) {
+        text = errorMsg;
+      } else if (location) {
+        text = JSON.stringify(location);
+      }
 
 const press = () => {
    
@@ -24,6 +51,7 @@ const press = () => {
     var hour = new Date().getHours();
     var min = new Date().getMinutes();
    
+    console.log(location);
      if(min>0 && min<9){
         min = "0"+min;
        //console.log(min)
@@ -34,12 +62,12 @@ const press = () => {
         Time: hour + ":" + min,
         Name: "Haloweave",
         Count:  year +""+ month +""+ date +""+ hour +""+ min,
+        Location: text,
     });
    
 };
-const SkyBlueDashboard = () => (
 
-
+return(
     <View style={styles.container}>
         <LinearGradient
             // Background Linear Gradient
@@ -66,7 +94,8 @@ const SkyBlueDashboard = () => (
         </TouchableOpacity>
      
     </View>
-);
+    );
+};
 
 const styles = StyleSheet.create({
     container: {
