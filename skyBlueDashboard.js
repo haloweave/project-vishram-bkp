@@ -17,11 +17,9 @@ import { LinearGradient } from 'expo-linear-gradient';
 var date = new Date().getDate();
 var month = new Date().getMonth() + 1;
 var year = new Date().getFullYear();
-// console.log(date + ":" + month + ":" +year);
 var hour = new Date().getHours();
 var min = new Date().getMinutes();
 
-console.log(min);
 const press = () => {
     app.firestore().collection("skyblue").add({
         Date: date + "/" + month + "/" + year,

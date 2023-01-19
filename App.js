@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, SafeAreaView, TouchableOpacity, View, Button, Text } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
 import SkyBlueDashboard from "./skyBlueDashboard";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Fetch } from "./fetch";
+import Login from "./login";
+import { app } from "./initFirebase";
+import Registeration from "./registration";
 
 
 const Stack = createNativeStackNavigator();
@@ -34,7 +36,8 @@ function HomeScreen({ navigation }) {
 
 function MyStack() {
     return (
-        <Stack.Navigator  screenOptions={{headerShown: false}} >
+        <Stack.Navigator screenOptions={{ headerShown: false }} >
+            <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="User" component={SkyBlueDashboard} />
             <Stack.Screen name="Admin" component={Fetch} />
@@ -43,20 +46,76 @@ function MyStack() {
 }
 
 function App() {
+    const [initializing, setInitializing] = useState(true);
+    const [user, setUser] = useState();
+
+    function onAuthStateChanged(user) {
+        setUser(user);
+
+        if (initializing) setInitializing(false);
+    }
+
+    useEffect(() => {
+        const subscriber = app.auth().onAuthStateChanged(onAuthStateChanged);
+        return subscriber;
+    }, []);
+    if (initializing) return null;
+
+    if (!user) {
+        
+        return (
+            <Stack.Navigator>
+                
+                <Stack.Screen 
+                name="Login" 
+                component={Login}/>
+
+                <Stack.Screen 
+                name="Registeration" 
+                component={Registeration}/>
+
+                
+
+               
+
+            </Stack.Navigator>
+          
+            
+        );
+    }
+
     return (
-        <NavigationContainer >
-            <MyStack />
-        </NavigationContainer>
+        <Stack.Navigator>
+                <Stack.Screen 
+                name="Home" 
+                component={HomeScreen}
+                // options={{
+                //     headerTitle: ()=> <Header name="Sky Blue"/>,
+                //     headerStyle: {
+                //         height:150,
+                //         borderBottomLeftRadius:50,
+                //         borderBottomRightRadius:50,
+                //         backgroundColor:'#00e4d0',
+                //         shadowColor:'0000',
+                //         elevation:25
+                //     }
+                // }}
+                 />
+                  <Stack.Screen name="User" component={SkyBlueDashboard} />
+            <Stack.Screen name="Admin" component={Fetch} />
+
+            </Stack.Navigator>
     );
 }
 
+
 const styles = StyleSheet.create({
-     container: {
+    container: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: 'orange',
-      },
+    },
 
     background: {
         position: "absolute",
@@ -83,7 +142,7 @@ const styles = StyleSheet.create({
         justifyContent: "center", //Vertical
         backgroundColor: "white",
         borderColor: "black",
-        marginBottom:20
+        marginBottom: 20
     },
 
     texts: {
@@ -93,4 +152,10 @@ const styles = StyleSheet.create({
 
 });
 
-export default App;
+export default ()=>{
+    return (
+        <NavigationContainer>
+            <App/>
+        </NavigationContainer>
+    )
+}
