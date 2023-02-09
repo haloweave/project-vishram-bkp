@@ -38,7 +38,7 @@ const SkyBlueDashboard = () => {
 
     //set time here that sky blue button activates
 
-    const [skyBlueHour, setSkyblueHour] = useState(14);
+    const [skyBlueHour, setSkyblueHour] = useState(15);
     const [skyBlueMinute, setSkyblueMinute] = useState(49);
     const [skyBlueSecond, setSkyblueSecond] = useState(0);
 
