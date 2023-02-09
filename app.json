@@ -25,8 +25,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.projectvishram.app",
-      "useNextNotificationApi":true
+      "package": "com.projectvishram.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
